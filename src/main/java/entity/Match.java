@@ -1,21 +1,22 @@
 package entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "matches")
 public class Match {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
     @Column(name = "id")
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "player1_id")
     private Player player1;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "player2_id")
     private Player player2;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "winner_id")
     private Player winner;
 

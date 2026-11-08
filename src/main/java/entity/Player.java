@@ -1,16 +1,16 @@
 package entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 @Table(name = "players")
 public class Player {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @UuidGenerator(style = UuidGenerator.Style.TIME)
     @Column (name = "id")
     private Integer id;
-
-    @Column (name = "name")
+    @Column (name = "name", nullable = false, length = 255)
     private String name;
 
     public Player() {}
